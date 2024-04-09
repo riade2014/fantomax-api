@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import * as firebase from "firebase/app";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA6Er3qwF5_wvWb1t_ntFUJKtvWtb-Chws",
+    apiKey: process.env.API_KEY,
     authDomain: "task-manager-projectweb.firebaseapp.com",
     projectId: "task-manager-projectweb",
     storageBucket: "task-manager-projectweb.appspot.com",
