@@ -1,9 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import * as firebase from "firebase/app";
+import routes from "./router"
 
 const firebaseConfig = {
-    apiKey: process.env.API_KEY,
+    apiKey: "AIzaSyA6Er3qwF5_wvWb1t_ntFUJKtvWtb-Chws",
     authDomain: "task-manager-projectweb.firebaseapp.com",
     projectId: "task-manager-projectweb",
     storageBucket: "task-manager-projectweb.appspot.com",
@@ -13,16 +14,13 @@ const firebaseConfig = {
   };
 
 // Initialisation Firebase
- const firebaseApp = firebase.initializeApp(firebaseConfig);
-// Initialisation of dotenv 
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT ;
 
-app.get('/', (req, res) => {
-  res.send('Bienvenue sur thefantomax');
-});
+app.use('/api-v1', routes);
 
 app.listen(port, () => {
   console.log(`Server is listening at http://localhost:${port}`);
