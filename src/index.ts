@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import * as firebase from "firebase/app";
-import routes from "./router"
+import routes from "./router";
 
 const firebaseConfig = {
     apiKey: "AIzaSyA6Er3qwF5_wvWb1t_ntFUJKtvWtb-Chws",
