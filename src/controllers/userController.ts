@@ -1,7 +1,6 @@
 // userController.ts
 import { Request, Response } from 'express';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential} from 'firebase/auth';
-import { sign } from 'jsonwebtoken';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 import moment from "moment";
 
@@ -59,11 +58,12 @@ class UserController {
       const token = await user.getIdToken();
 
       res.status(200).json({
-        token,
-        email: user.email,
-        lastname: userData?.lastname || '',
-        firstname: userData?.firstname || '',
-        createdAt: userData?.createdAt
+        token, userData
+        // email: user.email,
+        // lastname: userData?.lastname || '',
+        // firstname: userData?.firstname || '',
+        // createdAt: userData?.createdAt,
+        // uid:
 
       });
     } catch (error) {

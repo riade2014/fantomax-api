@@ -31,25 +31,26 @@ class TaskController {
     try {
       const userId = req.params.uid;
       const state = req.query.state as string;
-
+  
       const firestore = getFirestore();
       const tasksCollection = collection(firestore, 'TASK');
-
+  
       let tasksQuery = query(tasksCollection, where('userId', '==', userId));
-
+  
       if (state === 'true') {
         tasksQuery = query(tasksQuery, where('state', '==', state === 'true'));
       }
-
+  
       const tasksSnapshot = await getDocs(tasksQuery);
       const tasks = tasksSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-      res.status(200).json({ tasks });
+  
+      res.status(200).json(tasks); 
     } catch (error) {
       console.error('Erreur lors de la récupération des tâches de l\'utilisateur :', error);
       res.status(500).json({ error: 'Une erreur est survenue lors de la récupération des tâches.' });
     }
   }
+  
 
   async getTaskById(req: Request, res: Response) {
     try {
