@@ -19,7 +19,8 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT ;
+const port = 33300 ;
+// const port = process.env.PORT ;
 
 
 app.use((req, res, next) => {
